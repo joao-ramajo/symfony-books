@@ -1,11 +1,11 @@
 <div x-data="{ open: false}">
-	<div class="bg-white shadow-md rounded-xl p-6 hover:shadow-lg transition" @click="open = !open" @click.outside="open = false">
+	<div class="bg-white shadow-md rounded-xl p-6 hover:shadow-lg transition h-[150px]" @click="open = !open" @click.outside="open = false">
 
 		<h2 class="text-xl font-semibold text-gray-800 mb-2">
 			{{ book.title }}
 		</h2>
 
-		<p class="text-gray-600 mb-1">
+		<p class="text-gray-600 mb-1 h-[50px] truncate">
 			<span class="font-medium">Description:</span>
 			{{ book.description }}
 		</p>

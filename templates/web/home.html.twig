@@ -15,22 +15,20 @@
 
 			<p class="text-gray-600 mb-8 leading-relaxed">
 				A simple Symfony project styled with TailwindCSS.
-											Explore the CRUD, learn the framework, and customize everything!
+															Explore the CRUD, learn the framework, and customize everything!
 			</p>
 		</div>
 
 	</div>
 
-	<div class="min-h-screen bg-gray-50 px-6" >
+	<div class="min-h-screen bg-gray-50 px-6">
 
 		<h1 class="text-3xl font-bold text-gray-800 mb-8 text-center">Books</h1>
 
 		<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
 
 			{% for book in books %}
-				<twig:Card 
-                    :book="book" 
-                    />
+				<twig:Card :book="book"/>
 			{% else %}
 				<div class="col-span-full text-center text-gray-500">
 					No books found.
