@@ -33,7 +33,7 @@ O projeto implementa um CRUD básico de livros com páginas estilizadas e alguns
 
 ---
 
-## ▶odando o projeto
+## Rodando o projeto
 
 ```bash
 composer install
