@@ -1,10 +1,4 @@
-Perfeito — vou montar um **README curto, direto, elegante e profissional**, adequado para um repositório de **estudos sobre Symfony**, com o nome **Symfony Books**.
 
-Sem exageros.
-Sem partes desnecessárias.
-Simples e limpo.
-
----
 
 # 📚 Symfony Books
 
