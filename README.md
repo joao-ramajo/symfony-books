@@ -1,13 +1,14 @@
 
 
 # 📚 Symfony Books
-![Symfony](https://img.shields.io/badge/Symfony-6.0-000000?logo=symfony&logoColor=white)
-![PHP](https://img.shields.io/badge/PHP-8.2-777BB4?logo=php&logoColor=white)
-![Tailwind](https://img.shields.io/badge/TailwindCSS-3.0-38B2AC?logo=tailwind-css&logoColor=white)
-![Alpine.js](https://img.shields.io/badge/Alpine.js-3.x-8BC0D0?logo=alpine.js&logoColor=white)
-![Twig](https://img.shields.io/badge/Twig-3.x-68A063?logo=twig&logoColor=white)
 
-Um repositório simples criado para estudar e experimentar o ecossistema **Symfony**, incluindo:
+![Symfony](https://img.shields.io/badge/Symfony-black?logo=symfony&logoColor=white)
+![PHP](https://img.shields.io/badge/PHP-777BB4?logo=php&logoColor=white)
+![TailwindCSS](https://img.shields.io/badge/TailwindCSS-38B2AC?logo=tailwind-css&logoColor=white)
+![Alpine.js](https://img.shields.io/badge/Alpine.js-8BC0D0?logo=alpine.js&logoColor=white)
+![Twig](https://img.shields.io/badge/Twig-68A063?logo=twig&logoColor=white)
+
+Um repositório criado para estudar e experimentar o ecossistema **Symfony**, incluindo:
 
 * criação de CRUDs
 * uso do Doctrine ORM
