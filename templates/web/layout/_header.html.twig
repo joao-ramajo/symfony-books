@@ -1,32 +1,72 @@
 <header class="fixed top-0 left-0 right-0 bg-white shadow-md z-50">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="h-16 flex items-center justify-between">
+	<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+		<div
+			class="h-16 flex items-center justify-between">
 
-            <!-- Logo / Título -->
-            <a href="{{ path('home') }}">
-                <div class="flex items-center space-x-3">
-                    <span class="text-xl font-bold text-gray-800">Symfony Books</span>
-                </div>
-            </a>
+			<!-- Logo / Título -->
+			<a href="{{ path('home') }}">
+				<div class="flex items-center space-x-3">
+					<span class="text-xl font-bold text-gray-800">Symfony Books</span>
+				</div>
+			</a>
 
-            <!-- Menu / Ações -->
-            <nav class="hidden md:flex space-x-6">
-                <a href="{{ path('home') }}" class="text-gray-600 hover:text-gray-900 font-medium transition">Home</a>
-                <a href="{{ path('home') }}" class="text-gray-600 hover:text-gray-900 font-medium transition">Books</a>
-                {# <a href="#" class="text-gray-600 hover:text-gray-900 font-medium transition">Sobre</a> #}
-            </nav>
+			<!-- Menu / Ações -->
+			<nav class="hidden md:flex space-x-6">
+				<a href="{{ path('home') }}" class="text-gray-600 hover:text-gray-900 font-medium transition">Home</a>
+				<a href="{{ path('home') }}" class="text-gray-600 hover:text-gray-900 font-medium transition">Books</a>
+				{# <a href="#" class="text-gray-600 hover:text-gray-900 font-medium transition">Sobre</a> #}
+			</nav>
 
-            <!-- Ações com botão / avatar -->
-            <a href="{{ path('app_login') }}">
-                <div class="flex items-center space-x-4">
-                    <button class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition">
-                        Login
-                    </button>
-                </div>
-            </a>
+			<!-- Ações com botão / avatar -->
+			{% if app.user %}
+				<div
+					class="flex items-center space-x-4">
+					<!-- Mensagem de boas-vindas -->
+					<div
+						class="flex items-center space-x-3">
+						<!-- Avatar -->
+						<div class="flex-shrink-0">
+							<div class="h-10 w-10 rounded-full bg-indigo-600 flex items-center justify-center">
+								<span class="text-sm font-medium text-white">
+									{{ app.user.email|slice(0, 2)|upper }}
+								</span>
+							</div>
+						</div>
 
-        </div>
-    </div>
+						<!-- Texto de boas-vindas -->
+						<div class="hidden sm:block">
+							<p class="text-sm font-medium text-gray-700">
+								Hello,
+							</p>
+							<p class="text-sm text-gray-500">
+								{{ app.user.email }}
+							</p>
+						</div>
+					</div>
+
+					<!-- Botão de logout -->
+					<a href="{{ path('app_logout') }}" class="inline-flex items-center px-4 py-2 border border-gray-300 rounded-lg text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 transition">
+						<svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"></path>
+						</svg>
+						Logout
+					</a>
+				</div>
+			{% else %}
+				<a href="{{ path('app_login') }}">
+					<div class="flex items-center space-x-4">
+						<button class="inline-flex items-center px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition font-medium">
+							<svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1"></path>
+							</svg>
+							Login
+						</button>
+					</div>
+				</a>
+			{% endif %}
+
+		</div>
+	</div>
 </header>
 
 <!-- Adiciona padding no body para não ficar atrás do header -->

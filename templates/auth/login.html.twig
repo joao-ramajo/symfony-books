@@ -1,38 +1,100 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Log in!{% endblock %}
+{% block title %}Log in!
+{% endblock %}
 
 {% block body %}
-    <form method="post">
-        {% if error %}
-            <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-        {% endif %}
+	<div class="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
+		<div class="sm:mx-auto sm:w-full sm:max-w-sm">
+			<h2 class="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
+				Welcome to Symfony Books
+			</h2>
+		</div>
 
-        {% if app.user %}
-            <div class="mb-3">
-                You are logged in as {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">Logout</a>
-            </div>
-        {% endif %}
+		<div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
+			{% if error %}
+				<div class="rounded-md bg-red-50 p-4 mb-6">
+					<div class="flex">
+						<div class="flex-shrink-0">
+							<svg class="h-5 w-5 text-red-400" viewbox="0 0 20 20" fill="currentColor">
+								<path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.28 7.22a.75.75 0 00-1.06 1.06L8.94 10l-1.72 1.72a.75.75 0 101.06 1.06L10 11.06l1.72 1.72a.75.75 0 101.06-1.06L11.06 10l1.72-1.72a.75.75 0 00-1.06-1.06L10 8.94 8.28 7.22z" clip-rule="evenodd"/>
+							</svg>
+						</div>
+						<div class="ml-3">
+							<p class="text-sm font-medium text-red-800">
+								{{ error.messageKey|trans(error.messageData, 'security') }}
+							</p>
+						</div>
+					</div>
+				</div>
+			{% endif %}
 
-        <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
-        <label for="username">Email</label>
-        <input type="email" value="{{ last_username }}" name="_username" id="username" class="form-control" autocomplete="email" required autofocus>
-        <label for="password">Password</label>
-        <input type="password" name="_password" id="password" class="form-control" autocomplete="current-password" required>
-        <input type="hidden" name="_csrf_token" data-controller="csrf-protection" value="{{ csrf_token('authenticate') }}">
+			{% if app.user %}
+				<div class="rounded-md bg-blue-50 p-4 mb-6">
+					<div class="flex">
+						<div class="flex-shrink-0">
+							<svg class="h-5 w-5 text-blue-400" viewbox="0 0 20 20" fill="currentColor">
+								<path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a.75.75 0 000 1.5h.253a.25.25 0 01.244.304l-.459 2.066A1.75 1.75 0 0010.747 15H11a.75.75 0 000-1.5h-.253a.25.25 0 01-.244-.304l.459-2.066A1.75 1.75 0 009.253 9H9z" clip-rule="evenodd"/>
+							</svg>
+						</div>
+						<div class="ml-3 flex-1">
+							<p class="text-sm text-blue-700">
+								Você está logado como
+								<strong>{{ app.user.userIdentifier }}</strong>,
+								<a href="{{ path('app_logout') }}" class="font-medium underline hover:text-blue-600">Sair</a>
+							</p>
+						</div>
+					</div>
+				</div>
+			{% endif %}
 
-        {#
-            Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
-            See https://symfony.com/doc/current/security/remember_me.html
+			<form method="post" class="space-y-6">
+				<div>
+					<label for="username" class="block text-sm font-medium leading-6 text-gray-900">
+						Email
+					</label>
+					<div class="mt-2">
+						<input type="email" value="{{ last_username }}" name="_username" id="username" class="px-2.5 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" autocomplete="email" required autofocus>
+					</div>
+				</div>
 
-            <div class="checkbox mb-3">
-                <input type="checkbox" name="_remember_me" id="_remember_me">
-                <label for="_remember_me">Remember me</label>
-            </div>
-        #}
+				<div>
+					<label for="password" class="block text-sm font-medium leading-6 text-gray-900">
+						Password
+					</label>
+					<div class="mt-2">
+						<input type="password" name="_password" id="password" class="px-2.5 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" autocomplete="current-password" required>
+					</div>
+				</div>
 
-        <button class="btn btn-lg btn-primary" type="submit">
-            Sign in
-        </button>
-    </form>
+				<input
+				type="hidden" name="_csrf_token" data-controller="csrf-protection" value="{{ csrf_token('authenticate') }}">
+
+				{#
+				                <div class="flex items-center">
+				                    <input 
+				                        type="checkbox" 
+				                        name="_remember_me" 
+				                        id="_remember_me"
+				                        class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"
+				                    >
+				                    <label for="_remember_me" class="ml-3 block text-sm leading-6 text-gray-900">
+				                        Lembrar de mim
+				                    </label>
+				                </div>
+				                #}
+
+				<div>
+					<button type="submit" class="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
+						Entrar
+					</button>
+				</div>
+			</form>
+
+			<p class="mt-10 text-center text-sm text-gray-500">
+				Não tem uma conta?
+				<a href="#" class="font-semibold leading-6 text-indigo-600 hover:text-indigo-500">Cadastre-se</a>
+			</p>
+		</div>
+	</div>
 {% endblock %}
