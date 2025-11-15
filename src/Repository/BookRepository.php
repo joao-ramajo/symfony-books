@@ -31,6 +31,11 @@ class BookRepository extends ServiceEntityRepository
     //        ;
     //    }
 
+    public function all(): array
+    {
+        return $this->createQueryBuilder('b')->getQuery()->getResult();
+    }
+
     //    public function findOneBySomeField($value): ?Book
     //    {
     //        return $this->createQueryBuilder('b')
