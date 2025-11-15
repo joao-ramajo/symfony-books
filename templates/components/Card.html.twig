@@ -1,17 +1,68 @@
-<div class="bg-white shadow-md rounded-xl p-6 hover:shadow-lg transition">
+<div x-data="{ open: false}">
+	<div class="bg-white shadow-md rounded-xl p-6 hover:shadow-lg transition" @click="open = !open" @click.outside="open = false">
 
-					<h2 class="text-xl font-semibold text-gray-800 mb-2">
-						{{ book.title }}
-					</h2>
+		<h2 class="text-xl font-semibold text-gray-800 mb-2">
+			{{ book.title }}
+		</h2>
 
-					<p class="text-gray-600 mb-1">
-						<span class="font-medium">Description:</span>
-						{{ book.description }}
-					</p>
+		<p class="text-gray-600 mb-1">
+			<span class="font-medium">Description:</span>
+			{{ book.description }}
+		</p>
 
-					<p class="text-gray-600">
-						<span class="font-medium">Pages:</span>
-						{{ book.pageNumber }}
-					</p>
+		<p class="text-gray-600">
+			<span class="font-medium">Pages:</span>
+			{{ book.pageNumber }}
+		</p>
 
+	</div>
+	<div>
+
+		<!-- Fundo escuro / backdrop -->
+		<div x-show="open" x-transition.opacity @click="open = false" class="fixed inset-0 bg-black/50 backdrop-blur-sm z-40"></div>
+
+		<!-- Modal -->
+		<div x-show="open" x-transition class="fixed inset-0 z-50 flex items-center justify-center p-4">
+			<div
+				@click.stop class="bg-white w-full max-w-lg rounded-2xl shadow-lg p-6 relative">
+				<!-- Botão fechar -->
+				<button @click="open = false" class="absolute top-3 right-3 text-gray-500 hover:text-gray-800">
+					✕
+				</button>
+
+				<!-- Conteúdo -->
+				<h2 class="text-2xl font-bold text-gray-800 mb-3">
+					{{ book.title }}
+				</h2>
+
+				<p class="text-gray-600 mb-4">
+					description:
+					<span class="font-medium">{{ book.description }}</span>
+				</p>
+
+				<p class="text-gray-600 mb-4">
+					Páginas:
+					<span class="font-medium">{{ book.pageNumber }}</span>
+				</p>
+
+				<p class="text-gray-700">
+					Aqui você pode colocar uma descrição maior, sinopse, comentários,
+					                autor, etc.
+				</p>
+
+				<!-- Ações -->
+				<div class="mt-6 flex justify-end gap-3">
+					<button @click="open = false" class="px-4 py-2 bg-gray-200 rounded-lg hover:bg-gray-300 transition">
+						Fechar
+					</button>
+
+					<a href="{{ path('app_book_show', {id: book.id}) }}" class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition">
+						Ver página
+					</a>
 				</div>
+
+			</div>
+		</div>
+	</div>
+
+</div>

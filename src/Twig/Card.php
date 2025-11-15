@@ -5,8 +5,8 @@ namespace App\Book;
 use App\Entity\Book;
 use Symfony\UX\TwigComponent\Attribute\AsTwigComponent;
 
-#[AsTwigComponent]
+#[AsTwigComponent('Card')]
 class Card
 {
-    public readonly Book $title;
+    public Book $book;
 }
